@@ -3,8 +3,9 @@ const Io = std.Io;
 
 const zcc = @import("zcc");
 
-pub fn main() !void {
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
+pub fn main(init: std.process.Init) !void {
+    const allocator = init.gpa;
 
-    std.debug.print("What is my string? {s}", .{zcc.myString()});
+    const compiler = zcc.Compiler.init(allocator, init.io);
+    try compiler.run("../return_2.c", "../return_2.i");
 }
