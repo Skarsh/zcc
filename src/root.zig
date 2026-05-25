@@ -1,2 +1,2 @@
-pub const Driver = @import("src/Driver.zig");
+pub const Driver = @import("Driver.zig");
 
