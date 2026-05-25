@@ -6,6 +6,6 @@ const zcc = @import("zcc");
 pub fn main(init: std.process.Init) !void {
     const allocator = init.gpa;
 
-    const compiler = zcc.Compiler.init(allocator, init.io);
-    try compiler.run("../return_2.c", "../return_2.i");
+    var driver = zcc.Driver{ .allocator = allocator, .io = init.io };
+    try driver.run("../return_2.c", "../return_2.i");
 }
